@@ -1,0 +1,142 @@
+composer create-project laravel/laravel Hospital
+code . 
+make sure the database name and create database
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+npm install && npm run dev
+Goto database\migrations\users_table and add the attributes
+Goto resources\views\auth\register.blade.php to add the address and phone input
+Goto app\actions\fortify\createNewUser.php to add the attribute for return user::create
+Goto Models\User.php add the attribute to $fillable
+
+php artisan make:controller HomeController
+Goto web.php to add the Route to the homeController
+Goto Providers\RouteServiceProvider.php to change the constant home to '\home'
+Goto HomeController.php to add the redirect() function which is distribute the role of user to entire page
+Goto resources\views create new folder (admin) and new file(home.blade.php) and copy the code from dashboard.blade.php
+Goto navigation-menu.blade.php to delete the unncessary nav bar and logo
+Goto app.blade.php and change the background colour of the div tag
+Goto resources\views create new folder (user) and new file(home.blade.php) and copy the code from admin.home to user.home
+
+Download the template https://www.free-css.com/free-css-templates/page270/one-health
+Extract the file and copy the HTML and css directory and paste at Hospital\public
+Copy all the code from public\html\index.html and paste at resource\user\home.blade.php
+Goto web.php and add the route for the main page without login
+Goto HomeController.php and add the index function that will return the user home page
+Goto user\home.blade.php, separate the login and register function and add the route for the page
+Goto user\home.blade.php to add the if else statement to let the login and register button display when user havent loggin only
+Goto user\home.blade.php and cut out the doctor code part and create new file in user directory (doctor.blade.php) and paste the doctor code in it
+Goto user\home.blade.php and include for the doctor file
+Goto user\home.blade.php and cut out the Make an Appointment code part and create new file in user directory (appointment.blade.php) and paste the make an appointment code in it
+Goto user\home.blade.php and include for the appointment file
+Goto user\home.blade.php and delete the download apps part
+Goto user\home.blade.php and cut out the Latest news code part and create new file in user directory (latest.blade.php) and paste the latest news code in it
+Goto user\home.blade.php and include for the latest news file
+
+Download the tempate https://github.com/BootstrapDash/corona-free-dark-bootstrap-admin-template
+Copy all from template and paste in public new directory (admin)
+Copy all from public\admin\index.html and paste in resources\admin\home.blade.php and add admin/asset for all the source
+Goto admin\home.blade.php and cut out the partial (navbar) part and create new file in admin directory (navbar.blade.php) and paste the navbar code in it
+Goto admin\home.blade.php and include for the navbar file
+Goto admin\home.blade.php and cut out the sidebar part and create new file in admin directory (sidebar.blade.php) and paste the sidebar code in it
+Goto admin\home.blade.php and include for the sidebar file
+Goto admin\home.blade.php and cut out the body part and create new file in admin directory (body.blade.php) and paste the body code in it
+Goto admin\home.blade.php and include for the body file
+Goto navbar.blade.php delete the orginal profile code and paste <x-app-layout></x-app-layout>
+Goto views\navigation-menu.blade.php first line delete the code inside the code to remove the background colour
+
+Goto admin\sidebar.blade.php delete all the side option and just leave the Documentation option
+Goto admin\sidebar.blade.php and change the display option and the href for the route to add_doctor_view
+Goto web.php add the route that will goto AdminController the addview function
+php artisan make:controller AdminController
+Goto AdminController.php and add the addview function that will return the view to admin.add_doctor
+Copy all from admin\home.blade.php to admin\add_doctor.blade.php and delete the content part code
+Copy the <div>container from admin\navbar.blade.php first line code to the add_doctor.blade.php to display the content
+Goto admin\add_doctor.blade.php to add the form and the input option and add the style at the <head>
+php artisan make:model Doctor -m
+Goto database\migration\doctor table.php and add the attribute for the doctor database
+php artisan migrate
+Goto admin\add_doctor.blade.php to edit the form action, method, enctype and add @csrf
+Goto web.php to add the route that will post the form data
+Goto AdminController.php to add the upload function
+Goto admin\add_doctor.blade.php to add the show message function
+Goto user\doctor.blade.php delete all the item and add the foreach function to display all the doctors in the database
+Goto HomeController.php to add the $doctor variable to pass the doctor data to doctor.blade.php
+Goto HomeController.php to add a function in index() to make sure the user will go to their homepage after login
+
+Goto user\appointment.blade.php and edit the option input part to let the user choose the doctor
+php artisan make:model Appointment -m
+Goto database\migration\appointment table.php and add the attribute for the appointment database
+php artisan migrate
+Goto user\appointment.blade.php add the from action and method and @csrf and give all the name to all the input
+Goto web.php to add the route to store the appointment
+Goto HomeController.php add the appointment function to receive the data and store to database
+Goto user\home.blade.php add the show message function
+
+Goto user\home.blade.php to add the my appointment button if the user has been logged in
+Goto web.php to add the route to myappointment
+Goto HomeController.php to add the myappointment function to return the view for myappointment
+Create new file (my_appointment.blade.php) in user folder
+Goto user\my_appointment.blade.php to add the table for the data
+Goto HomeController.php myappointment function add the if statement to prevent user jump to myappointment page without login
+Goto HomeController.php add the compact method that will pass the relevant appointment to the page
+Goto user\my_appointment.blade.php add the @foreach method to display the appointment details
+Goto user\my_appointment.blade.php add the cancel button
+Goto web.php to add the route to cancel the appointment
+Goto HomeController.php and add the cancel_appoint function to delete the data
+Goto admin\sidebar.blade.php to add the Appoinment button
+Goto web.php to add the route to showappointment
+Goto AdminController.php to add the showappointment function to return the showappointment view
+Create new file (showappointment.blade.php) in admin folder
+Goto admin\showappointment.blade.php copy all the code form admin\home.blade.php and paste to the showappointment.php
+Goto admin\showappoinment.php delete the body part and add the table to display the data
+Goto AdminController.php add the compact in showappointment function to pass the data to the showappointment page
+Goto admin\showappointment.blade.php to add the approve and delete button
+Goto web.php to add the route for the approve and delete
+Goto AdminController.php to add the approved() and canceled() function to change the status of the appointment
+
+Goto admin\sidebar.blade.php add the showdoctor button
+Goto web.php to add the route to showdoctor
+Goto AdminController.php to add the showdoctor function
+Goto admin\showappointment.blade.php copy all the code to admin\showdoctor.blade.php and delete the content part code
+Goto AdminController.php to add the compact to pass the data to the page
+Goto admin\showdoctor.blade.php to add the table to show the doctor data
+Goto admin\showdoctor.blade.php to add the update and delete button
+Goto web.php to add the route to delete doctor
+Goto AdminController.php to add the deletedoctor function 
+Goto web.php to add the route to update doctor
+Goto AdminController.php to add the updatedoctor function
+Create new file (update_doctor.blade.php) in admin folder
+Copy all the code from showdoctor.blade.php to update_doctor.blade.php and delete the content part code
+**if the css dissapear, add the base tag
+Copy the content part from admin\add_doctor.blade.php to update_doctor.blade.php and put the original value to the input part
+Goto web.php to add the route to editdoctor
+Goto AdminController.php to add the editdoctor function (editdoctor is similar to add doctor code and just edit some code)
+
+Goto Models\User.php implement MustVerifyEmail
+Goto config\fortify.php remove the comment part of the emailVerification()
+Goto .env edit the mail part which is MAIL_HOST, MAIL_USERNAME, MAIL_PASSWORD, MAIL_ENCRYPTION, MAIL_FROM_ADDRESS and MAIL_FROM_NAME (make sure the port number)
+Goto gmail manage -> security, on the less secure app access
+Goto web.php the home route to add the middleware for the auth verified
+
+Goto admin\showappointment.blade.php to add the email button
+Goto web.php to add the route to emailview
+Goto AdminController.php to add the emailview function
+Create new file (email_view.blade.php) in admin folder
+Goto admin\email_view.blade.php and paste the code from adddoctor.blade.php and delete/edit the content part code
+**if the css dissapear, add the base tag
+php artisan notifications:table
+php artisan migrate
+php artisan make:notification SendEmailNotification
+Goto app\Notifications\SendEmailNotification.php add a new variable ($details)
+Goto app\Notifications\SendEmailNotification.php edit the construct function
+Goto app\Notifications\SendEmailNotification.php edit the toMail function
+Goto admin\email_view.blade.php edit the form url
+Goto web.php to add the route to sendemail
+Goto AdminController.php to add the sendemail function
+Goto Model\Appointment.php to add the use Notifiable
+** use Illuminate\Support\Facades\Notification;
+
+Goto user\doctor.blade.php to edit the image style to make the image height important
+Goto user page to edit the home href to route back to main page
+Goto AdminController to add the id statement to makesure the user is admin only when want to get the Adminview (all the function have return view)
